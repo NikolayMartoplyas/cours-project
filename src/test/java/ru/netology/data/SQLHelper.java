@@ -32,5 +32,11 @@ public class SQLHelper {
         var requestSql = "SELECT amount FROM payment_entity ORDER BY created DESC";
         return QUERY_RUNNER.query(conection, requestSql, new ScalarHandler<>());
     }
+    @SneakyThrows
+    public static String getPaymentStatus(){
+        var conection = getConn();
+        var requestSql = "SELECT status FROM payment_entity ORDER BY created DESC";
+        return QUERY_RUNNER.query(conection, requestSql, new ScalarHandler<>());
+    }
 
 }

@@ -51,6 +51,17 @@ public class FormTest {
         String expectedAmount = "45_000";
         assertEquals(expectedAmount, amountStr);
     }
+    //запрос в БД на проверку статуса
+    @Test
+    void mustCheckPurchaseStatus(){
+        var approved = DataHelper.makingPurchase();
+        initialize();
+        cashPurchasePage.validCardInfo(approved);
+        String status = SQLHelper.getPaymentStatus();
+        String expectedStatus = "APPROVED";
+        assertEquals(expectedStatus, status);
+    }
+
 
     // валидный тест карты approved
     @Test
