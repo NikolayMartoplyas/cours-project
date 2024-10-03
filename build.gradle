@@ -23,6 +23,10 @@ repositories {
     mavenCentral()
 }
 
+//def dbUser = project.findProperty('db.username') ?: 'defaultUsername' // после знака ? если свойство не задано, используется значение по умолчанию
+//def dbPassword = project.findProperty('db.password') ?: 'defaultPassword'
+//def dbUrl = project.findProperty('db.url') ?: 'defaultUrl'
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'com.mysql:mysql-connector-j:8.2.0'
@@ -35,6 +39,8 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3306/SBER')
+    systemProperty 'db.user', System.getProperty('db.user', 'niko')
+    systemProperty 'db.password', System.getProperty('db.password', 'nik995')
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
     systemProperty 'chromeoptions.prefs', System.getProperty('chromeoptions.prefs', "profile.password_manager_leak_detection=false")
 }

@@ -10,12 +10,15 @@ import java.sql.SQLException;
 
 public class SQLHelper {
     private static final QueryRunner QUERY_RUNNER = new QueryRunner();
+    private static final String DB_USERNAME = System.getProperty("db.user");
+    private static final String DB_PASSWORD = System.getProperty("db.password");
+    private static final String DB_URL = System.getProperty("db.url");
 
     private SQLHelper(){
     }
 
     private static Connection getConn() throws SQLException{
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/SBER", "niko", "nik995");
+        return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
 
     @SneakyThrows
