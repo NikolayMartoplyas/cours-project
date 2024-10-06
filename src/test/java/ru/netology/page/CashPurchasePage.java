@@ -26,10 +26,11 @@ public class CashPurchasePage {
     private final SelenideElement cvcError = $(byText("CVC/CVV")).parent().$(".input__sub");
 
 
-    public void enterCardInfo(int index, String value){
+    public void enterCardInfo(int index, String value) {
         inputsColection.get(index).setValue(value);
     }
-    public void invalidCardInfo(DataHelper.CardInfo info){
+
+    public void invalidCardInfo(DataHelper.CardInfo info) {
         enterCardInfo(0, info.getNumberCard());
         enterCardInfo(1, info.getMonth());
         enterCardInfo(2, info.getYear());
@@ -37,7 +38,8 @@ public class CashPurchasePage {
         enterCardInfo(4, info.getCvc());
         buttonNext.click(ClickOptions.withTimeout(Duration.ofSeconds(30)));
     }
-    public void emptyFieldNumberCard(DataHelper.CardInfo info){
+
+    public void emptyFieldNumberCard(DataHelper.CardInfo info) {
         enterCardInfo(0, "");
         enterCardInfo(1, info.getMonth());
         enterCardInfo(2, info.getYear());
@@ -45,7 +47,8 @@ public class CashPurchasePage {
         enterCardInfo(4, info.getCvc());
         buttonNext.click();
     }
-    public void emptyFieldMonth(DataHelper.CardInfo info){
+
+    public void emptyFieldMonth(DataHelper.CardInfo info) {
         enterCardInfo(0, info.getNumberCard());
         enterCardInfo(1, "");
         enterCardInfo(2, info.getYear());
@@ -53,7 +56,8 @@ public class CashPurchasePage {
         enterCardInfo(4, info.getCvc());
         buttonNext.click();
     }
-    public void emptyFieldYear(DataHelper.CardInfo info){
+
+    public void emptyFieldYear(DataHelper.CardInfo info) {
         enterCardInfo(0, info.getNumberCard());
         enterCardInfo(1, info.getMonth());
         enterCardInfo(2, "");
@@ -61,7 +65,8 @@ public class CashPurchasePage {
         enterCardInfo(4, info.getCvc());
         buttonNext.click();
     }
-    public void emptyFieldOwner(DataHelper.CardInfo info){
+
+    public void emptyFieldOwner(DataHelper.CardInfo info) {
         enterCardInfo(0, info.getNumberCard());
         enterCardInfo(1, info.getMonth());
         enterCardInfo(2, info.getYear());
@@ -69,7 +74,8 @@ public class CashPurchasePage {
         enterCardInfo(4, info.getCvc());
         buttonNext.click();
     }
-    public void emptyFieldCVC(DataHelper.CardInfo info){
+
+    public void emptyFieldCVC(DataHelper.CardInfo info) {
         enterCardInfo(0, info.getNumberCard());
         enterCardInfo(1, info.getMonth());
         enterCardInfo(2, info.getYear());
@@ -78,35 +84,42 @@ public class CashPurchasePage {
         buttonNext.click();
     }
 
-    public void validCardInfo(DataHelper.CardInfo info){
+    public void validCardInfo(DataHelper.CardInfo info) {
         invalidCardInfo(info);
         messageSuccessful.shouldBe(visible, Duration.ofSeconds(15));
     }
-    public void popUpMessage(String expectedText){
+
+    public void popUpMessage(String expectedText) {
         cardNumberError.shouldHave(text(expectedText))
                 .shouldBe(visible, Duration.ofSeconds(15));
     }
-    public void errorNumberCard(String expectedText){
+
+    public void errorNumberCard(String expectedText) {
         cardNumberError.shouldHave(text(expectedText))
                 .shouldBe(visible, Duration.ofSeconds(15));
     }
-    public void errorMonth(String expectedText){
+
+    public void errorMonth(String expectedText) {
         monthError.shouldHave(text(expectedText))
                 .shouldBe(visible, Duration.ofSeconds(15));
     }
-    public void errorYear(String expectedText){
+
+    public void errorYear(String expectedText) {
         yearError.shouldHave(text(expectedText))
                 .shouldBe(visible, Duration.ofSeconds(15));
     }
-    public void cardHasExpired(String expectedText){
+
+    public void cardHasExpired(String expectedText) {
         expiredCardError.shouldHave(text(expectedText))
                 .shouldBe(visible, Duration.ofSeconds(15));
     }
-    public void errorOwner(String expectedText){
+
+    public void errorOwner(String expectedText) {
         ownerError.shouldHave(text(expectedText))
                 .shouldBe(visible, Duration.ofSeconds(15));
     }
-    public void errorCVC(String expectedText){
+
+    public void errorCVC(String expectedText) {
         cvcError.shouldHave(text(expectedText))
                 .shouldBe(visible, Duration.ofSeconds(15));
     }
